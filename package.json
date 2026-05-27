@@ -1,0 +1,13 @@
+{
+  "name": "com.hungnt.ui",
+  "version": "1.0.0",
+  "displayName": "com.hungnt.ui",
+  "description": "HungNT UI (HungNT.UI): UIViewBase, UIButtonBase, UIScaleFeedback.",
+  "unity": "2022.3",
+  "dependencies": {},
+  "author": {
+    "name": "HungNT",
+    "url": "https://github.com/HungNT-UPM"
+  },
+  "license": "MIT"
+}
