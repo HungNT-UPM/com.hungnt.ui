@@ -12,8 +12,8 @@ namespace HungNT.UI
     {
         [Title("Scale On Press")]
         [SerializeField, InlineButton(nameof(RefreshScale))] private float _originScale = 1f;
-        [SerializeField] private float _pressScaleMultiplier = 0.9f;
-        [SerializeField] private float _releaseScaleMultiplier = 1.1f;
+        [SerializeField] private float _pressScaleMultiplier = 0.95f;
+        [SerializeField] private float _releaseScaleMultiplier = 1.05f;
         [SerializeField] private float _pressAnimDuration = 0.15f;
 
         [Title("Scale In Idle")]
