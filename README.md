@@ -1,4 +1,4 @@
-# HungNT UI (`com.hungnt.ui`)
+# com.hungnt.ui
 
 Base UI và feedback tương tác nhẹ.
 

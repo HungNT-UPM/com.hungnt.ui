@@ -1,6 +1,6 @@
 {
   "name": "com.hungnt.ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "displayName": "com.hungnt.ui",
   "description": "HungNT UI (HungNT.UI): UIViewBase, UIButtonBase, UIScaleFeedback.",
   "unity": "2022.3",
