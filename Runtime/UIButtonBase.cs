@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace HungNT.UI
 {
     /// <summary>
-    /// Button UI cơ bản: sprite, title, highlight, listener click sync.
+    /// Button UI cơ bản: set sprite / title / highlight, quản lý listener click.
     /// Kế thừa <see cref="UIViewBase"/> — dùng chung RectTransform / CanvasGroup.
     /// </summary>
     [RequireComponent(typeof(Button))]

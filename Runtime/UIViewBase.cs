@@ -4,7 +4,6 @@ namespace HungNT.UI
 {
     /// <summary>
     /// Base UI view: cache <see cref="RectTransform"/> và <see cref="CanvasGroup"/> (lazy, tự add nếu thiếu).
-    /// Reference bị destroy sẽ được lấy lại lần truy cập sau (Unity fake-null).
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     public class UIViewBase : MonoBehaviour
