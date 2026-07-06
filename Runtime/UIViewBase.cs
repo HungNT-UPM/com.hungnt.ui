@@ -55,23 +55,12 @@ namespace HungNT.UI
         }
 
         /// <summary>
-        /// Đọc/ghi <see cref="CanvasGroup.interactable"/>; mặc định true nếu chưa có CanvasGroup.
+        /// Đọc/ghi <see cref="CanvasGroup.interactable"/> (property <see cref="CanvasGroup"/> tự add component nếu thiếu).
         /// </summary>
         public virtual bool Interactable
         {
-            get
-            {
-                if (CanvasGroup != null)
-                    return CanvasGroup.interactable;
-
-                return true;
-            }
-
-            set
-            {
-                if (CanvasGroup != null)
-                    CanvasGroup.interactable = value;
-            }
+            get => CanvasGroup.interactable;
+            set => CanvasGroup.interactable = value;
         }
 
         private T GetOrAddComponent<T>() where T : Component
