@@ -1,6 +1,6 @@
 # com.hungnt.ui
 
-Base UI cho hệ sinh thái HungNT: view base cache sẵn `RectTransform` / `CanvasGroup`, button cơ bản, và feedback scale khi nhấn. Các package UI khác (`com.hungnt.ui.tween`, `com.hungnt.ui.panel`) đều kế thừa từ đây.
+Base UI cho hệ sinh thái HungNT: view base cache sẵn `RectTransform` / `CanvasGroup`, button cơ bản, feedback scale khi nhấn, và anim idle (lắc lư / lơ lửng). Các package UI khác (`com.hungnt.ui.tween`, `com.hungnt.ui.panel`) đều kế thừa từ đây.
 
 Namespace: **`HungNT.UI`**.
 
@@ -23,7 +23,7 @@ https://github.com/HungNT-UPM/com.hungnt.ui.git#1.0.3
 ### Yêu cầu
 - Unity 2022.3+
 - TextMeshPro
-- Odin Inspector + DOTween — chỉ cần cho `UIScaleFeedback`
+- Odin Inspector + DOTween — cần cho `UIScaleFeedback` và `UIIdleSwing` / `UIIdleFloat`
 
 ---
 
@@ -86,3 +86,36 @@ Button
 ```
 
 > `_originScale` lấy từ `localScale` hiện tại — bấm **Refresh** trong Inspector nếu đổi scale gốc của object.
+
+---
+
+## UIIdleSwing / UIIdleFloat
+
+Anim **lặp lúc UI đứng yên** để thẻ bài / icon vật phẩm không đứng chết. Cùng base `UIIdleLoopBase`, dùng DOTween theo unscaled time.
+
+| Component | Hiệu ứng |
+|-----------|----------|
+| `UIIdleSwing` | lắc lư quanh trục Z trong một khoảng góc |
+| `UIIdleFloat` | trôi lên xuống theo Y trong một khoảng |
+
+Field chung (`UIIdleLoopBase`):
+
+| Field | Mặc định | Ý nghĩa |
+|-------|----------|---------|
+| `_autoPlay` | `true` | tự chạy khi GameObject bật |
+| `_loopCount` | `-1` | `-1` = vô hạn (`0` quy về 1 nhịp) |
+| `_loopType` | `Yoyo` | `Yoyo` đi rồi về, `Restart` nhảy về đầu khoảng |
+| `_ease` | `InOutSine` | |
+| `_duration` | `1.2` | thời gian một nhịp (đầu khoảng → cuối khoảng) |
+| `_useRandomDelay` | `true` | bốc trễ ngẫu nhiên trước nhịp đầu |
+| `_delay` | `0` | trễ cố định — hiện khi `_useRandomDelay = false` |
+| `_delayRange` | `0 – 0.5` | khoảng bốc ngẫu nhiên (bốc lại mỗi lần `Play`), để nhiều thẻ không lắc trùng nhịp |
+
+Field riêng: `UIIdleSwing._angleRange` (mặc định `-4 – 4` độ, lệch so với góc Z gốc) + `_rotateMode`; `UIIdleFloat._offsetRange` (mặc định `-6 – 6` px theo Y, lệch so với `anchoredPosition` gốc).
+
+Trạng thái gốc đọc **một lần** ở `Awake`; `Stop()` mặc định trả object về đúng trạng thái đó.
+
+```csharp
+_card.GetComponent<UIIdleSwing>().Play();   // chạy lại từ đầu, bốc random delay mới
+_card.GetComponent<UIIdleSwing>().Stop();   // dừng + về góc gốc
+```

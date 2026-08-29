@@ -2,7 +2,7 @@
   "name": "com.hungnt.ui",
   "version": "1.0.3",
   "displayName": "HungNT UI",
-  "description": "HungNT UI (HungNT.UI): UIViewBase, UIButtonBase, UIScaleFeedback.",
+  "description": "HungNT UI (HungNT.UI): UIViewBase, UIButtonBase, UIScaleFeedback, UIObjectPool, idle loop (swing/float).",
   "unity": "2022.3",
   "dependencies": {},
   "author": {
