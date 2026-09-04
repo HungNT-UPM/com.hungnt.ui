@@ -13,6 +13,10 @@ namespace HungNT.UI
         #region === Config ===
 
         [Title("Idle Loop")]
+        [Tooltip("Tự cache vị trí On Awake")]
+        [SerializeField]
+        private bool _autoCapture = true;
+
         [Tooltip("Tự chạy khi GameObject được bật.")]
         [SerializeField]
         private bool _autoPlay = true;
@@ -72,7 +76,10 @@ namespace HungNT.UI
 
         protected virtual void Awake()
         {
-            CaptureOrigin();
+            if (_autoCapture)
+            {
+                CaptureOrigin();
+            }
         }
 
         private void OnEnable()
